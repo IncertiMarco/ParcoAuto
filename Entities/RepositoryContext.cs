@@ -14,5 +14,8 @@ namespace Entities
         }
         public DbSet<Auto> autoId { get; set; }
         public DbSet<NomeAuto> NomeAuto { get; set; }
+
+        public DbSet<Storico> StoricoAuto { get; set; }
+
     }
 }
