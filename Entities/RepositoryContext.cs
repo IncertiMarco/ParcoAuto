@@ -22,6 +22,10 @@ namespace Entities
 
         public DbSet<Prenotazioni> Prenotazioni { get; set; }
 
+        public DbSet<Note> Note { get; set; }
+
+        public DbSet<SpecificheAuto> SpecificheAuto { get; set; }
+
 
     }
 }

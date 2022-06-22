@@ -8,21 +8,12 @@ namespace Entities.Models
     public class Prenotazioni
     {
 
-        /* public int Id { get; set; }
-         public DateTime Data { get; set; }
-         public int Kilometer { get; set; }
-
-
-         public Utenti Utenti { get; set; }
-
-
-         public Auto Auto { get; set; }
-         */
-
         [Column("PrenotazioniId")]
         public Guid Id { get; set; }
 
-        public DateTime DataPrenotazione { get; set; }
+        public DateTime DataInizioPrenotazione { get; set; }
+
+        public DateTime DataFinePrenotazione { get; set; }
 
         public int Chilometri { get; set; }
 
@@ -34,5 +25,6 @@ namespace Entities.Models
         [ForeignKey(nameof(Utenti))]
         public Guid UtentiId { get; set; }
         public Utenti Utenti { get; set; }
+
     }
 }

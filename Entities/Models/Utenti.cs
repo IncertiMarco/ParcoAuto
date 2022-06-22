@@ -8,17 +8,15 @@ namespace Entities.Models
 {
     public class Utenti
     {
-        /*
-         public int UtentiId { get; set; }
 
-         public string Nome { get; set; }
-
-         public string Cognome { get; set; }
-        */
         [Column("UtentiId")]
         public Guid Id { get; set; }
 
-        public string Targa { get; set; }
+
+        public string Nome { get; set; }
+
+        public string Cognome { get; set; }
+        
 
         public ICollection<Prenotazioni> Prenotazioni { get; set; }
     }

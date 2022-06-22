@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ParcoAuto.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20220622135613_DatabaseCreation")]
+    [Migration("20220622154919_DatabaseCreation")]
     partial class DatabaseCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,15 +28,32 @@ namespace ParcoAuto.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("AutoId");
 
-                    b.Property<string>("Cognome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nome")
+                    b.Property<string>("Targa")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Auto");
+                });
+
+            modelBuilder.Entity("Entities.Models.Note", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("NotaId");
+
+                    b.Property<string>("Annotazione")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PrenotazioniId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PrenotazioniId");
+
+                    b.ToTable("Note");
                 });
 
             modelBuilder.Entity("Entities.Models.Prenotazioni", b =>
@@ -52,8 +69,14 @@ namespace ParcoAuto.Migrations
                     b.Property<int>("Chilometri")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DataPrenotazione")
+                    b.Property<DateTime>("DataFinePrenotazione")
                         .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataInizioPrenotazione")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("NoteId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UtentiId")
                         .HasColumnType("uniqueidentifier");
@@ -62,9 +85,35 @@ namespace ParcoAuto.Migrations
 
                     b.HasIndex("AutoId");
 
+                    b.HasIndex("NoteId");
+
                     b.HasIndex("UtentiId");
 
                     b.ToTable("Prenotazioni");
+                });
+
+            modelBuilder.Entity("Entities.Models.SpecificheAuto", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("ModelloId");
+
+                    b.Property<Guid>("AutoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Marca")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Modello")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AutoId")
+                        .IsUnique();
+
+                    b.ToTable("SpecificheAuto");
                 });
 
             modelBuilder.Entity("Entities.Models.Utenti", b =>
@@ -74,7 +123,10 @@ namespace ParcoAuto.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("UtentiId");
 
-                    b.Property<string>("Targa")
+                    b.Property<string>("Cognome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -82,13 +134,28 @@ namespace ParcoAuto.Migrations
                     b.ToTable("Utenti");
                 });
 
+            modelBuilder.Entity("Entities.Models.Note", b =>
+                {
+                    b.HasOne("Entities.Models.Prenotazioni", "Prenotazioni")
+                        .WithMany()
+                        .HasForeignKey("PrenotazioniId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Prenotazioni");
+                });
+
             modelBuilder.Entity("Entities.Models.Prenotazioni", b =>
                 {
                     b.HasOne("Entities.Models.Auto", "Auto")
-                        .WithMany("prenotazioni")
+                        .WithMany("Prenotazioni")
                         .HasForeignKey("AutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Entities.Models.Note", null)
+                        .WithMany("Prenotazionis")
+                        .HasForeignKey("NoteId");
 
                     b.HasOne("Entities.Models.Utenti", "Utenti")
                         .WithMany("Prenotazioni")
@@ -101,9 +168,27 @@ namespace ParcoAuto.Migrations
                     b.Navigation("Utenti");
                 });
 
+            modelBuilder.Entity("Entities.Models.SpecificheAuto", b =>
+                {
+                    b.HasOne("Entities.Models.Auto", "Auto")
+                        .WithOne("specificheAuto")
+                        .HasForeignKey("Entities.Models.SpecificheAuto", "AutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Auto");
+                });
+
             modelBuilder.Entity("Entities.Models.Auto", b =>
                 {
-                    b.Navigation("prenotazioni");
+                    b.Navigation("Prenotazioni");
+
+                    b.Navigation("specificheAuto");
+                });
+
+            modelBuilder.Entity("Entities.Models.Note", b =>
+                {
+                    b.Navigation("Prenotazionis");
                 });
 
             modelBuilder.Entity("Entities.Models.Utenti", b =>
