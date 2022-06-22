@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Entities;
 
 namespace ParcoAuto
 {
@@ -23,6 +24,8 @@ namespace ParcoAuto
         {
             LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(),"/nlog.config"));
             Configuration = configuration;
+
+           
         }
 
         public IConfiguration Configuration { get; }

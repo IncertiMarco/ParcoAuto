@@ -1,8 +1,10 @@
 ﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
 
 namespace Entities
 {
@@ -12,10 +14,14 @@ namespace Entities
         : base(options)
         {
         }
-        public DbSet<Auto> autoId { get; set; }
-        public DbSet<NomeAuto> NomeAuto { get; set; }
 
-        public DbSet<Storico> StoricoAuto { get; set; }
+        
+
+        public DbSet<Auto> Auto { get; set; }
+        public DbSet<Utenti> Utenti { get; set; }
+
+        public DbSet<Prenotazioni> Prenotazioni { get; set; }
+
 
     }
 }

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcoAuto", "ParcoAuto\ParcoAuto.csproj", "{1027C973-14C7-4015-85AC-1702ACAB38AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcoAuto", "ParcoAuto\ParcoAuto.csproj", "{1027C973-14C7-4015-85AC-1702ACAB38AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{44A82B61-C940-4346-BB4B-4992524E107B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{44A82B61-C940-4346-BB4B-4992524E107B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{4C16A4B6-A562-4324-8DAD-2BEB16D15BE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerService\LoggerService.csproj", "{4C16A4B6-A562-4324-8DAD-2BEB16D15BE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{162B568A-D9DA-4A83-A15C-3500C15F09E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{162B568A-D9DA-4A83-A15C-3500C15F09E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

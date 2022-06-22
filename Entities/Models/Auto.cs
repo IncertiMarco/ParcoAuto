@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Entities.Models
 {
     public class Auto
     {
+        /* public int AutoId { get; set; }
 
+         public string AutoName { get; set; }
+
+         public string Targa { get; set; }
+        */
         [Column("AutoId")]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
-        [Required(ErrorMessage = "AutoId is a required field.")]
-        [MaxLength(60, ErrorMessage = "Maximum length for the Name is 60 characters.")]
+        public string Nome { get; set; }
 
-        public bool Disponibile { get; set; }
-        
-        public ICollection<NomeAuto> Nomeauto { get; set; }
+        public string Cognome { get; set; }
+
+        public ICollection<Prenotazioni> prenotazioni { get; set; }
     }
 }
