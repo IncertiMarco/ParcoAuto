@@ -14,9 +14,9 @@ namespace ParcoAuto.Extensions
                                             services.AddCors(options =>
     {
     options.AddPolicy("CorsPolicy", builder =>
-    builder.WithOrigins("https://example.com")
-    .WithMethods("POST", "GET")
-    .WithHeaders("accept", "content-type"));
+    builder.AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
     });
 
      public static void ConfigureIISIntegration(this IServiceCollection services) =>

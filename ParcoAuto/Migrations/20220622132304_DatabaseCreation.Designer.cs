@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ParcoAuto.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20220622131155_DatabaseCreation")]
+    [Migration("20220622132304_DatabaseCreation")]
     partial class DatabaseCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
