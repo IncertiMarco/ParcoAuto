@@ -16,7 +16,7 @@ namespace Entities.Models
          public string Cognome { get; set; }
         */
         [Column("UtentiId")]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Targa { get; set; }
 

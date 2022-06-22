@@ -15,7 +15,7 @@ namespace Entities.Models
          public string Targa { get; set; }
         */
         [Column("AutoId")]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Nome { get; set; }
 
