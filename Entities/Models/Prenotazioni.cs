@@ -17,6 +17,8 @@ namespace Entities.Models
 
         public int Chilometri { get; set; }
 
+        public ICollection<Note> Note { get; set; }
+
 
         [ForeignKey(nameof(Auto))]
         public Guid AutoId { get; set; }

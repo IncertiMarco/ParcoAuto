@@ -16,7 +16,6 @@ namespace Entities.Models
         public Guid PrenotazioniId { get; set; }
         public Prenotazioni Prenotazioni { get; set; }
 
-        public ICollection<Prenotazioni> Prenotazionis { get; set; }
 
     }
 }

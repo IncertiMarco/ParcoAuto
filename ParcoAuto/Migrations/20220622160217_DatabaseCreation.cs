@@ -61,8 +61,7 @@ namespace ParcoAuto.Migrations
                     DataFinePrenotazione = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Chilometri = table.Column<int>(type: "int", nullable: false),
                     AutoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UtentiId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NoteId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    UtentiId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,11 +110,6 @@ namespace ParcoAuto.Migrations
                 column: "AutoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Prenotazioni_NoteId",
-                table: "Prenotazioni",
-                column: "NoteId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Prenotazioni_UtentiId",
                 table: "Prenotazioni",
                 column: "UtentiId");
@@ -125,21 +119,12 @@ namespace ParcoAuto.Migrations
                 table: "SpecificheAuto",
                 column: "AutoId",
                 unique: true);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Prenotazioni_Note_NoteId",
-                table: "Prenotazioni",
-                column: "NoteId",
-                principalTable: "Note",
-                principalColumn: "NotaId",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Note_Prenotazioni_PrenotazioniId",
-                table: "Note");
+            migrationBuilder.DropTable(
+                name: "Note");
 
             migrationBuilder.DropTable(
                 name: "SpecificheAuto");
@@ -149,9 +134,6 @@ namespace ParcoAuto.Migrations
 
             migrationBuilder.DropTable(
                 name: "Auto");
-
-            migrationBuilder.DropTable(
-                name: "Note");
 
             migrationBuilder.DropTable(
                 name: "Utenti");

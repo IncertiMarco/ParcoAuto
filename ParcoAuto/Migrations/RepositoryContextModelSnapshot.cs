@@ -73,17 +73,12 @@ namespace ParcoAuto.Migrations
                     b.Property<DateTime>("DataInizioPrenotazione")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("NoteId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("UtentiId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AutoId");
-
-                    b.HasIndex("NoteId");
 
                     b.HasIndex("UtentiId");
 
@@ -135,7 +130,7 @@ namespace ParcoAuto.Migrations
             modelBuilder.Entity("Entities.Models.Note", b =>
                 {
                     b.HasOne("Entities.Models.Prenotazioni", "Prenotazioni")
-                        .WithMany()
+                        .WithMany("Note")
                         .HasForeignKey("PrenotazioniId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -150,10 +145,6 @@ namespace ParcoAuto.Migrations
                         .HasForeignKey("AutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Entities.Models.Note", null)
-                        .WithMany("Prenotazionis")
-                        .HasForeignKey("NoteId");
 
                     b.HasOne("Entities.Models.Utenti", "Utenti")
                         .WithMany("Prenotazioni")
@@ -184,9 +175,9 @@ namespace ParcoAuto.Migrations
                     b.Navigation("specificheAuto");
                 });
 
-            modelBuilder.Entity("Entities.Models.Note", b =>
+            modelBuilder.Entity("Entities.Models.Prenotazioni", b =>
                 {
-                    b.Navigation("Prenotazionis");
+                    b.Navigation("Note");
                 });
 
             modelBuilder.Entity("Entities.Models.Utenti", b =>
