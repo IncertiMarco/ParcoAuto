@@ -19,7 +19,7 @@ namespace Entities.Models
          public Auto Auto { get; set; }
          */
 
-        [Column("Prenotazioni")]
+        [Column("PrenotazioniId")]
         public Guid Id { get; set; }
 
         public DateTime DataPrenotazione { get; set; }

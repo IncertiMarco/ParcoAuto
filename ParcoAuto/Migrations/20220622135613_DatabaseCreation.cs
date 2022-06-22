@@ -36,7 +36,7 @@ namespace ParcoAuto.Migrations
                 name: "Prenotazioni",
                 columns: table => new
                 {
-                    Prenotazioni = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PrenotazioniId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DataPrenotazione = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Chilometri = table.Column<int>(type: "int", nullable: false),
                     AutoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -44,7 +44,7 @@ namespace ParcoAuto.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Prenotazioni", x => x.Prenotazioni);
+                    table.PrimaryKey("PK_Prenotazioni", x => x.PrenotazioniId);
                     table.ForeignKey(
                         name: "FK_Prenotazioni_Auto_AutoId",
                         column: x => x.AutoId,

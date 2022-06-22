@@ -42,7 +42,7 @@ namespace ParcoAuto.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Prenotazioni");
+                        .HasColumnName("PrenotazioniId");
 
                     b.Property<Guid>("AutoId")
                         .HasColumnType("uniqueidentifier");

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ParcoAuto.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20220622132304_DatabaseCreation")]
+    [Migration("20220622135613_DatabaseCreation")]
     partial class DatabaseCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,7 +44,7 @@ namespace ParcoAuto.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Prenotazioni");
+                        .HasColumnName("PrenotazioniId");
 
                     b.Property<Guid>("AutoId")
                         .HasColumnType("uniqueidentifier");
