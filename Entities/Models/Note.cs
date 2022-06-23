@@ -8,12 +8,12 @@ namespace Entities.Models
     public class Note
     {
         [Column("NotaId")]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Annotazione { get; set; }
 
         [ForeignKey(nameof(Prenotazioni))]
-        public Guid PrenotazioniId { get; set; }
+        public int PrenotazioniId { get; set; }
         public Prenotazioni Prenotazioni { get; set; }
 
 

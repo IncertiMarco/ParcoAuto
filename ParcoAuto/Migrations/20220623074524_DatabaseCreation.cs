@@ -11,7 +11,8 @@ namespace ParcoAuto.Migrations
                 name: "Auto",
                 columns: table => new
                 {
-                    AutoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AutoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Targa = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -23,7 +24,8 @@ namespace ParcoAuto.Migrations
                 name: "Utenti",
                 columns: table => new
                 {
-                    UtentiId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UtentiId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Cognome = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -36,10 +38,11 @@ namespace ParcoAuto.Migrations
                 name: "SpecificheAuto",
                 columns: table => new
                 {
-                    ModelloId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ModelloId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Modello = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Marca = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AutoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    AutoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,12 +59,13 @@ namespace ParcoAuto.Migrations
                 name: "Prenotazioni",
                 columns: table => new
                 {
-                    PrenotazioniId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PrenotazioniId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DataInizioPrenotazione = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataFinePrenotazione = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Chilometri = table.Column<int>(type: "int", nullable: false),
-                    AutoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UtentiId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    AutoId = table.Column<int>(type: "int", nullable: false),
+                    UtentiId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -84,9 +88,10 @@ namespace ParcoAuto.Migrations
                 name: "Note",
                 columns: table => new
                 {
-                    NotaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NotaId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Annotazione = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PrenotazioniId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    PrenotazioniId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

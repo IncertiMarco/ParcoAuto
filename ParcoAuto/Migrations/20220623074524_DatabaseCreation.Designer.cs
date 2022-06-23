@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ParcoAuto.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20220622160217_DatabaseCreation")]
+    [Migration("20220623074524_DatabaseCreation")]
     partial class DatabaseCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,10 +23,11 @@ namespace ParcoAuto.Migrations
 
             modelBuilder.Entity("Entities.Models.Auto", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("AutoId");
+                        .HasColumnType("int")
+                        .HasColumnName("AutoId")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Targa")
                         .HasColumnType("nvarchar(max)");
@@ -38,16 +39,17 @@ namespace ParcoAuto.Migrations
 
             modelBuilder.Entity("Entities.Models.Note", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("NotaId");
+                        .HasColumnType("int")
+                        .HasColumnName("NotaId")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Annotazione")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PrenotazioniId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("PrenotazioniId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -58,13 +60,14 @@ namespace ParcoAuto.Migrations
 
             modelBuilder.Entity("Entities.Models.Prenotazioni", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("PrenotazioniId");
+                        .HasColumnType("int")
+                        .HasColumnName("PrenotazioniId")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid>("AutoId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AutoId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Chilometri")
                         .HasColumnType("int");
@@ -75,8 +78,8 @@ namespace ParcoAuto.Migrations
                     b.Property<DateTime>("DataInizioPrenotazione")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("UtentiId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("UtentiId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -89,13 +92,14 @@ namespace ParcoAuto.Migrations
 
             modelBuilder.Entity("Entities.Models.SpecificheAuto", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("ModelloId");
+                        .HasColumnType("int")
+                        .HasColumnName("ModelloId")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid>("AutoId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AutoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Marca")
                         .HasColumnType("nvarchar(max)");
@@ -113,10 +117,11 @@ namespace ParcoAuto.Migrations
 
             modelBuilder.Entity("Entities.Models.Utenti", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("UtentiId");
+                        .HasColumnType("int")
+                        .HasColumnName("UtentiId")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Cognome")
                         .HasColumnType("nvarchar(max)");

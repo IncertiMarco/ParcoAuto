@@ -9,7 +9,7 @@ namespace Entities.Models
     {
 
         [Column("PrenotazioniId")]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public DateTime DataInizioPrenotazione { get; set; }
 
@@ -21,11 +21,11 @@ namespace Entities.Models
 
 
         [ForeignKey(nameof(Auto))]
-        public Guid AutoId { get; set; }
+        public int AutoId { get; set; }
         public Auto Auto { get; set; }
 
         [ForeignKey(nameof(Utenti))]
-        public Guid UtentiId { get; set; }
+        public int UtentiId { get; set; }
         public Utenti Utenti { get; set; }
 
     }

@@ -9,7 +9,7 @@ namespace Entities.Models
     public class Auto
     {     
         [Column("AutoId")]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Targa { get; set; }
 
